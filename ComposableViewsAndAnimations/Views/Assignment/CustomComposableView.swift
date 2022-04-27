@@ -10,35 +10,33 @@ import SwiftUI
 
 struct CustomComposableView: View {
  
-@State private var isLoading = false
+    @State var circleColorChanged = false
+    @State var heartColorChanged = false
+    @State var heartSizeChanged = false
  
 var body: some View {
-        ZStack {
-
-
- //create the circle
-            Circle()
-            //(this code if also for the moving line that rotates)
-                .trim(from: 0, to: 0.5)
-                .stroke(Color.red, lineWidth: 20)
-                .frame(width: 150, height: 150)
-                .rotationEffect(Angle(degrees: isLoading ? 360 : 0))
-                .animation(Animation.linear(duration: 1).repeatForever(autoreverses: false))
-                .onAppear() {
-                    self.isLoading = true
-            }
-            //create the circle
-                       Circle()
-                       //(this code if also for the moving line that rotates)
-                           .trim(from: 0, to: 0.5)
-                           .stroke(Color.blue, lineWidth: 30)
-                           .frame(width: 150, height: 150)
-                           .rotationEffect(Angle(degrees: isLoading ? 0 : 360))
-                           .animation(Animation.linear(duration: 1).repeatForever(autoreverses: false))
-                           .onAppear() {
-                               self.isLoading = true
-                       }
-        }
+    
+    ZStack {
+        //create the circle that will chnage colour for the heart
+        Circle()
+            .frame(width: 200, height: 200)
+            .foregroundColor(circleColorChanged ? Color(.systemGray5) : .red)
+            .animation(.spring(response: 0.3, dampingFraction: 0.3, blendDuration: 0.3))
+   
+        //create the heart
+        Image(systemName: "heart.fill")
+            .foregroundColor(heartColorChanged ? .red : .white)
+            .font(.system(size: 100))
+            .animation(nil) // Cancel the animation from here
+            .scaleEffect(heartSizeChanged ? 1.0 : 0.5)
+            .animation(.spring(response: 0.3, dampingFraction: 0.3, blendDuration: 0.3))
+    }
+    //modify thew image
+    .onTapGesture {
+        self.circleColorChanged.toggle()
+        self.heartColorChanged.toggle()
+        self.heartSizeChanged.toggle()
+    }
     }
 }
 
