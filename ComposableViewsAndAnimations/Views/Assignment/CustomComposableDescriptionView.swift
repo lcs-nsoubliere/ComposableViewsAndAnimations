@@ -30,7 +30,8 @@ struct CustomComposableDescriptionView: View {
                     If the view accepts a parameter, provide a control to enter the input below.
                     """)
                 
-                TextField("Enter an input value", text: $phrase)
+                
+               // TextField("Enter an input value", text: $phrase)
                 
             }
             .padding(.bottom)

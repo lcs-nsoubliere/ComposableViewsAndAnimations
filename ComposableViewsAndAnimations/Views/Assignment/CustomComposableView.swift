@@ -9,34 +9,37 @@ import SwiftUI
 
 
 struct CustomComposableView: View {
+    //let user create the size of the button
+    @State var desiredSize: Int
  
     @State var circleColorChanged = false
     @State var heartColorChanged = false
     @State var heartSizeChanged = false
- 
-var body: some View {
     
-    ZStack {
-        //create the circle that will chnage colour for the heart
-        Circle()
-            .frame(width: 200, height: 200)
-            .foregroundColor(circleColorChanged ? Color(.systemGray5) : .red)
-            .animation(.spring(response: 0.3, dampingFraction: 0.3, blendDuration: 0.3))
-   
-        //create the heart
-        Image(systemName: "heart.fill")
-            .foregroundColor(heartColorChanged ? .red : .white)
-            .font(.system(size: 100))
-            .animation(nil) // Cancel the animation from here
-            .scaleEffect(heartSizeChanged ? 1.0 : 0.5)
-            .animation(.spring(response: 0.3, dampingFraction: 0.3, blendDuration: 0.3))
-    }
-    //modify thew image
-    .onTapGesture {
-        self.circleColorChanged.toggle()
-        self.heartColorChanged.toggle()
-        self.heartSizeChanged.toggle()
-    }
+    var body: some View {
+        
+        ZStack {
+            //create the circle that will chnage colour for the heart
+            Circle()
+                .frame(width: desiredSize, height: desiredSize)
+                .foregroundColor(circleColorChanged ? Color(.systemGray5) : .red)
+                .animation(.spring(response: 0.3, dampingFraction: 0.3, blendDuration: 0.3))
+            
+            //create the heart
+            Image(systemName: "heart.fill")
+                .foregroundColor(heartColorChanged ? .red : .white)
+                .font(.system(size: 100))
+                .animation(nil)
+            // Cancel the animation from here
+                .scaleEffect(heartSizeChanged ? 1.0 : 0.5)
+                .animation(.spring(response: 0.3, dampingFraction: 0.3, blendDuration: 0.3))
+        }
+        //modify thew image
+        .onTapGesture {
+            self.circleColorChanged.toggle()
+            self.heartColorChanged.toggle()
+            self.heartSizeChanged.toggle()
+        }
     }
 }
 
