@@ -12,6 +12,7 @@ struct CustomComposableDescriptionView: View {
     // MARK: Stored properties
     @State private var phrase: String = ""
     @State var selectedSize = 30.0
+  
     // MARK: Computed properties
     var body: some View {
         

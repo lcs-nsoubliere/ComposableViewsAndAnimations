@@ -21,14 +21,14 @@ struct CustomComposableView: View {
         ZStack {
             //create the circle that will chnage colour for the heart
             Circle()
-                .frame(width: desiredSize, height: desiredSize)
+                .frame(width: desiredSize + 45, height: desiredSize + 45)
                 .foregroundColor(circleColorChanged ? Color(.systemGray5) : .red)
                 .animation(.spring(response: 0.3, dampingFraction: 0.3, blendDuration: 0.3))
             
             //create the heart
             Image(systemName: "heart.fill")
                 .foregroundColor(heartColorChanged ? .red : .white)
-                .font(.system(size: 100))
+                .font(.system(size: desiredSize))
                 .animation(nil)
             // Cancel the animation from here
                 .scaleEffect(heartSizeChanged ? 1.0 : 0.5)
