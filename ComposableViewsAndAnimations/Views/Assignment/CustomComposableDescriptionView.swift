@@ -11,7 +11,7 @@ struct CustomComposableDescriptionView: View {
     
     // MARK: Stored properties
     @State private var phrase: String = ""
-    
+    @State var selectedSize = 30.0
     // MARK: Computed properties
     var body: some View {
         
@@ -31,13 +31,13 @@ struct CustomComposableDescriptionView: View {
                     """)
                 
                 
-               // TextField("Enter an input value", text: $phrase)
+                Slider(value: $selectedSize, in: 25...300)
                 
             }
             .padding(.bottom)
             
             List {
-                NavigationLink(destination: CustomComposableView()) {
+                NavigationLink(destination: CustomComposableView(desiredSize: selectedSize)) {
                     SimpleListItemView(title: "My Composable View",
                                        caption: "A brief description of my view")
                 }

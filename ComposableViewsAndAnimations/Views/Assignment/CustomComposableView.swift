@@ -10,7 +10,7 @@ import SwiftUI
 
 struct CustomComposableView: View {
     //let user create the size of the button
-    @State var desiredSize: Int
+    let desiredSize: Double
  
     @State var circleColorChanged = false
     @State var heartColorChanged = false
@@ -45,6 +45,6 @@ struct CustomComposableView: View {
 
 struct CustomComposableView_Previews: PreviewProvider {
     static var previews: some View {
-        CustomComposableView()
+        CustomComposableView(desiredSize: 25)
     }
 }
