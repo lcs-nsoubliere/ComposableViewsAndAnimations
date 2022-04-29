@@ -20,18 +20,15 @@ struct CustomComposableDescriptionView: View {
             
             Group {
                 
-                Text("Description")
+                Text("Heart Like Button")
                     .font(.title2)
                     .bold()
                     .padding(.top)
                 
                 Text("""
-                    Replace this with a description of how to use this view.
-
-                    If the view accepts a parameter, provide a control to enter the input below.
-                    """)
-                
-                
+When pressed it bounces and grows while while changes colour. The slider bellow selects the size of the heart and circle. NOTE: the cirlce size will always be +45 compared to the heart
+""")
+             
                 Slider(value: $selectedSize, in: 25...300)
                 
             }
@@ -39,14 +36,14 @@ struct CustomComposableDescriptionView: View {
             
             List {
                 NavigationLink(destination: CustomComposableView(desiredSize: selectedSize)) {
-                    SimpleListItemView(title: "My Composable View",
-                                       caption: "A brief description of my view")
+                    SimpleListItemView(title: "Heart Like Button View",
+                                       caption: "A like button that animates and changes colour")
                 }
             }
             
         }
         .padding()
-        .navigationTitle("My Composable View")
+        .navigationTitle("Heart Like Button view")
         
     }
 }
